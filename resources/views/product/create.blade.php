@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Create Product') }}
-                    <a href="" class="btn btn-danger btn-xs py-1 float-end">Back</a>
+                    <a href="{{route('products')}}" class="btn btn-danger btn-xs py-1 float-end">Back</a>
                 </div>
 
                 <div class="card-body">
@@ -16,7 +16,7 @@
                         <p> {{$message}} </p>
                     </div>
                     @endif
-                    <form method="POST" action="" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('products.store')}}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
