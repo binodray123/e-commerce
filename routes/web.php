@@ -27,4 +27,4 @@ Route::get('/products',[ProductController::class, 'index'])->name('products');
 Route::get('/products/view',[ProductController::class, 'view'])->name('products.view');
 Route::get('/products/create',[ProductController::class, 'create'])->name('products.create');
 Route::post('/products',[ProductController::class, 'store'])->name('products.store');
-Route::get('/product/{name}/details',[ProductController::class,'detail'])->name('products.details');
+Route::get('/product/{product}/details',[ProductController::class,'detail'])->name('products.details');

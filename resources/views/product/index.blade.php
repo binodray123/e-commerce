@@ -21,7 +21,7 @@
                         <div class="carousel-inner ">
                             @foreach ($products as $product)
                             <div class="carousel-item {{$product['id']==2?'active':''}}">
-                                <a href="{{route('products.details',$product->name)}}">
+                                <a href="{{route('products.details',$product)}}">
                                     <img src="{{asset('upload/image/' .$product->image)}}" class="d-block" style="width:100%; height: 400px;">
 
                                     <div class="carousel-caption " style="background-color: #35443585;">
@@ -46,7 +46,7 @@
                         <h3>Trending Products</h3>
                         @foreach ($products as $product)
                         <div class="trending-product">
-                            <a href="{{route('products.details', $product->name)}}">
+                            <a href="{{route('products.details', $product)}}">
                                 <img src="{{asset('upload/image/' .$product->image)}}" class="trending-image">
                                 <h5> {{ $product->name }} </h5>
                             </a>
