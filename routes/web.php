@@ -24,5 +24,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Product Route
 Route::get('/products',[ProductController::class, 'index'])->name('products');
+Route::get('/products/view',[ProductController::class, 'view'])->name('products.view');
 Route::get('/products/create',[ProductController::class, 'create'])->name('products.create');
 Route::post('/products',[ProductController::class, 'store'])->name('products.store');
