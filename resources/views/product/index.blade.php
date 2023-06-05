@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="">
             <div class="card">
-            <div class="card-header">{{ __('Products') }}</div>
+                <!-- <div class="card-header">{{ __('Products') }}</div> -->
                 <div class="card-body">
                     <!-- Carousel -->
                     <div id="demo" class="carousel slide" data-bs-ride="carousel">
@@ -21,11 +21,14 @@
                         <div class="carousel-inner ">
                             @foreach ($products as $product)
                             <div class="carousel-item {{$product['id']==2?'active':''}}">
-                                <img src="{{asset('upload/image/' .$product->image)}}" class="d-block" style="width:100%; height: 400px;">
-                                <div class="carousel-caption " style="background-color: #35443585;">
-                                    <h3> {{ $product->name }} </h3>
-                                    <p>{{ $product->description }}</p>
-                                </div>
+                                <a href="{{route('products.details',$product->name)}}">
+                                    <img src="{{asset('upload/image/' .$product->image)}}" class="d-block" style="width:100%; height: 400px;">
+
+                                    <div class="carousel-caption " style="background-color: #35443585;">
+                                        <h3> {{ $product->name }} </h3>
+                                        <p>{{ $product->description }}</p>
+                                    </div>
+                                </a>
                             </div>
                             @endforeach
                         </div>
@@ -38,6 +41,23 @@
                             <span class="carousel-control-next-icon"></span>
                         </button>
                     </div>
+
+                    <div class="trending-wrapper">
+                        <h3>Trending Products</h3>
+                        @foreach ($products as $product)
+                        <div class="trending-product">
+                            <a href="{{route('products.details', $product->name)}}">
+                                <img src="{{asset('upload/image/' .$product->image)}}" class="trending-image">
+                                <h5> {{ $product->name }} </h5>
+                            </a>
+                        </div>
+                        @endforeach
+
+                    </div>
                 </div>
             </div>
-            @endsection
+
+        </div>
+    </div>
+</div>
+@endsection
