@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
@@ -20,9 +19,15 @@ class CartController extends Controller
             return redirect()->route('products')->with('success','Product has been added to the cart successfully.');
         }
         else
+        // redirect to login page
         {
             return redirect()->route('login');
         }
 
+    }
+    public static function cartItem()
+    {
+        $userId = ['user_id' => auth()->user()->id];
+        return Cart::where('user_id', $userId)->count();
     }
 }

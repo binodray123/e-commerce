@@ -18,7 +18,7 @@
             <form action="{{route('products.addToCart',$product->id)}}" method="post">
                 @csrf
                 <!-- <input type="hidden" name="product_id" value="$product->id"> -->
-                <button type="submit" class="btn btn-primary">Add to Cart</button>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add To Cart</button>
             </form>
             <br> <br>
             <button class="btn btn-success">Buy Now</button>

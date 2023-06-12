@@ -12,6 +12,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+   <!-- Font-Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -29,6 +31,10 @@
     </style>
 </head>
 <body>
+    <?php
+    use App\Http\Controllers\CartController;
+    $total = CartController::cartItem();
+    ?>
     <div id="app">
         <nav class="navbar  navbar-expand-md navbar-light bg-white shadow-sm ">
             <div class="container">
@@ -69,7 +75,7 @@
                             @endif
                         @else
                         <li class="nav-item">
-                            <a href="" class="nav-link">Cart</a>
+                            <a href="" class="nav-link"><i class="fa fa-shopping-cart" aria-hidden="true"></i> {{$total}}</a>
                         </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
