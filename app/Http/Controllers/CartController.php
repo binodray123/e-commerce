@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
 
 class CartController extends Controller
 {
@@ -27,7 +30,9 @@ class CartController extends Controller
     }
     public static function cartItem()
     {
-        $userId = ['user_id' => auth()->user()->id];
+        // Get the data of respective user from database
+         $userId = ['user_id' => auth()->user()->id];
+        //  $userId= Auth::user()->id;
         return Cart::where('user_id', $userId)->count();
     }
 }

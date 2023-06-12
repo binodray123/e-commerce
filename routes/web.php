@@ -22,6 +22,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 // Product Route
 Route::get('/products',[ProductController::class, 'index'])->name('products');
 Route::get('/products/view',[ProductController::class, 'view'])->name('products.view');
@@ -31,4 +32,6 @@ Route::get('/product/{product}/details',[ProductController::class,'detail'])->na
 
 // Cart Controller
 
+
 Route::post('/add_to_cart/{id}',[CartController::class,'addToCart'])->name('products.addToCart');
+
