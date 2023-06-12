@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +28,7 @@ Route::get('/products/view',[ProductController::class, 'view'])->name('products.
 Route::get('/products/create',[ProductController::class, 'create'])->name('products.create');
 Route::post('/products',[ProductController::class, 'store'])->name('products.store');
 Route::get('/product/{product}/details',[ProductController::class,'detail'])->name('products.details');
+
+// Cart Controller
+
+Route::post('/add_to_cart/{id}',[CartController::class,'addToCart'])->name('products.addToCart');
