@@ -83,7 +83,7 @@
                         @endif
                         @else
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="fa fa-shopping-cart" aria-hidden="true"></i> {{$total}}</a>
+                            <a href="{{ route('products.cartList') }}" class="nav-link"><i class="fa fa-shopping-cart" aria-hidden="true"></i> {{$total}}</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

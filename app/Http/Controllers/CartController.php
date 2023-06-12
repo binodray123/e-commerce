@@ -35,4 +35,12 @@ class CartController extends Controller
         //  $userId= Auth::user()->id;
         return Cart::where('user_id', $userId)->count();
     }
+
+    public function cartList()
+    {
+        $cartItems = Cart::with('product')
+        ->where(['user_id'=>auth()->user()->id])
+        ->get();
+        return view('product.cartList', compact('cartItems'));
+    }
 }
