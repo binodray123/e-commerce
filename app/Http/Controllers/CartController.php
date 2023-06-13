@@ -40,7 +40,7 @@ class CartController extends Controller
     {
         $cartItems = Cart::with('product')
         ->where(['user_id'=>auth()->user()->id])
-        ->get();
+        ->paginate(3);
         return view('product.cartList', compact('cartItems'));
     }
 }

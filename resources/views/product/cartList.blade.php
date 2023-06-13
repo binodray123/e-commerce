@@ -34,10 +34,15 @@
                             </tr>
 
                             @endforeach
+
                         </tbody>
+
                     </table>
                 </div>
             </div>
+            <div class="row">
+                            {{ $cartItems->links() }}
+                        </div>
         </div>
     </div>
 </div>
