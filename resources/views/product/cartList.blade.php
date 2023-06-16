@@ -11,6 +11,11 @@
                 </div>
 
                 <div class="card-body">
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success" role="alert">
+                        <p> {{$message}} </p>
+                    </div>
+                    @endif
 
                     <table class="table table-border">
                         <tr>
@@ -30,7 +35,13 @@
                                 <td>{{$item->product->name}}</td>
                                 <td>{{$item->product->price}}</td>
                                 <td>{{$item->product->description}}</td>
-                                <td><a href="" class="btn"><i class="fa-solid fa-trash fa-lg" style="color: #f20713;"></i></a></td>
+                                <td>
+                                    <form action="{{route('carts.destroy', $item->id)}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn"><i class="fa-solid fa-trash fa-lg" style="color: #f20713;"></i></button>
+                                    </form>
+                                </td>
                             </tr>
 
                             @endforeach

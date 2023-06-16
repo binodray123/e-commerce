@@ -43,4 +43,10 @@ class CartController extends Controller
         ->paginate(3);
         return view('product.cartList', compact('cartItems'));
     }
+
+    public function destroy($id)
+    {
+        Cart::destroy($id);
+        return redirect()->back()->with('success', 'Your cart item deleted successfully.');
+    }
 }
