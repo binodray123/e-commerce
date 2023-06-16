@@ -57,9 +57,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a href="{{route('products')}}" class="nav-link">Home</a>
+                            <a href="{{route('home')}}" class="nav-link">Home</a>
                         </li>
-
                         <li class="nav-item">
                             <a href="{{route('myOrders')}}" class="nav-link">Orders</a>
                         </li>

@@ -25,7 +25,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Product Route
 Route::get('/products',[ProductController::class, 'index'])->name('products');
-Route::get('/products/view',[ProductController::class, 'view'])->name('products.view');
 Route::get('/products/create',[ProductController::class, 'create'])->name('products.create');
 Route::post('/products',[ProductController::class, 'store'])->name('products.store');
 Route::get('/product/{product}/details',[ProductController::class,'detail'])->name('products.details');
@@ -38,4 +37,4 @@ Route::get('/cart-list',[CartController::class, 'cartList'])->name('products.car
 Route::get('/products/order_now',[CartController::class, 'orderNow'])->name('products.orderNow');
 Route::delete('/cart/{id}/destroy',[CartController::class, 'destroy'])->name('carts.destroy');
 Route::post('/products/order',[CartController::class,'orderPlace'])->name('products.order');
-Route::get('/my_orders',[CartController::class, 'myOrders'])->name('myOrders');
+Route::get('/my_orders',[CartController::class, 'myOrders'])->name('myOrders')->middleware('auth');

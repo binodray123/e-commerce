@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Create Product') }}
-                    <a href="{{route('products')}}" class="btn btn-danger btn-xs py-1 float-end">Back</a>
+                    <a href="{{route('home')}}" class="btn btn-danger btn-xs py-1 float-end">Back</a>
                 </div>
 
                 <div class="card-body">

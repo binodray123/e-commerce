@@ -7,7 +7,7 @@
             <img src="{{asset('upload/image/' .$product->image)}}" style="height: 350px; width:100%">
         </div>
         <div class="col-sm-6">
-            <b><a href="{{route('products')}}"> Go Back</a></b>
+            <b><a href="{{route('home')}}"> Go Back</a></b>
             <br> <br>
             <h2>{{$product->name}}</h2>
             <h4> <b>Price</b> : {{$product->price}}</h4>

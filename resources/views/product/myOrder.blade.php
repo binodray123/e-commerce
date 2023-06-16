@@ -7,7 +7,7 @@
             <div class="card shadow-0 border rounded-3">
                 <div class="card-header">
                     My Orders
-                    <a href="{{route('products')}}" class=" py-2 float-end"><i class="fa-solid fa-xmark fa-lg" style="color: black;"></i></a>
+                    <a href="{{route('home')}}" class=" py-2 float-end"><i class="fa-solid fa-xmark fa-lg" style="color: black;"></i></a>
                 </div>
                 <div class="card-body">
                     <div class="row">
