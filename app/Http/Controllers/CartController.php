@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 
@@ -48,5 +49,16 @@ class CartController extends Controller
     {
         Cart::destroy($id);
         return redirect()->back()->with('success', 'Your cart item deleted successfully.');
+    }
+
+    public function orderNow()
+    {
+        // Fetching the products of total amount of user from cart list
+        $userId = ['user_id' => auth()->user()->id];
+        $total = DB::table('carts')
+        ->join('products', 'carts.product_id', '=','products.id')
+        ->where('carts.user_id', $userId)
+        ->sum('products.price');
+        return view('product.orderNow', ['total'=>$total]);
     }
 }

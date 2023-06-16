@@ -6,8 +6,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    Cart List
-                    <a href="{{route('products')}}" class=" py-1 float-end"><i class="fa-solid fa-xmark fa-lg" style="color: #eb0a0a;"></i></a>
+                <a href="{{route('products.orderNow')}}" class="btn btn-success py-1 float-center">Order Now</a>
+                    <a href="{{route('products')}}" class=" py-2 float-end"><i class="fa-solid fa-xmark fa-lg" style="color: #eb0a0a;"></i></a>
                 </div>
 
                 <div class="card-body">
