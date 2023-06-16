@@ -37,7 +37,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <form method="POST" action="">
+                    <form method="POST" action="{{route('products.order')}}">
                         @csrf
 
                         <div class="row mb-3">
@@ -54,17 +54,17 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="payment" class="col-md-4 col-form-label text-md-end">{{ __('Payment Method') }}</label>
+                            <label for="payment_method" class="col-md-4 col-form-label text-md-end">{{ __('Payment Method') }}</label>
 
                             <div class="col-md-6">
-                                <select name="payment" id="payment" class="form-control @error('payment') is-invalid @enderror" name="payment" value="{{ old('payment') }}" required autocomplete="payment">
+                                <select name="payment_method" id="payment_method" class="form-control @error('payment_method') is-invalid @enderror" name="payment_method" value="{{ old('payment_method') }}" required autocomplete="payment_method">
                                     <option value="">Select payment</option>
                                     <option value="Esewa">Esewa on Delivery</option>
                                     <option value="Khalti">Khalti on Delivery</option>
                                     <option value="Cash">Cash on Delivery</option>
                                 </select>
 
-                                @error('payment')
+                                @error('payment_method')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

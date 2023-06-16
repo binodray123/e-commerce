@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Order;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
-
+use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
@@ -60,5 +59,25 @@ class CartController extends Controller
         ->where('carts.user_id', $userId)
         ->sum('products.price');
         return view('product.orderNow', ['total'=>$total]);
+    }
+
+    public function orderPlace(Request $request)
+    {
+        $userId = ['user_id' => auth()->user()->id]; //checking the user session
+        $allCart = Cart::where('user_id', $userId)->get(); // fetching the cart data
+        // saving the data into order table and also removing the data from cart table
+        foreach($allCart as $cart)
+        {
+            $order = new Order;
+            $order->product_id=$cart['product_id'];
+            $order->user_id=$cart['user_id'];
+            $order->status="pending";
+            $order->payment_method = $request->payment_method;
+            $order->payment_status = "pending";
+            $order->address=$request->address;
+            $order->save();
+            Cart::where('user_id', $userId)->delete();
+        }
+        return redirect()->route('products');
     }
 }

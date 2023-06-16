@@ -37,3 +37,4 @@ Route::post('/add_to_cart/{id}',[CartController::class,'addToCart'])->name('prod
 Route::get('/cart-list',[CartController::class, 'cartList'])->name('products.cartList');
 Route::get('/products/order_now',[CartController::class, 'orderNow'])->name('products.orderNow');
 Route::delete('/cart/{id}/destroy',[CartController::class, 'destroy'])->name('carts.destroy');
+Route::post('/products/order',[CartController::class,'orderPlace'])->name('products.order');
