@@ -13,4 +13,9 @@ class Order extends Model
         'address',
         'payment_method'
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

@@ -38,3 +38,4 @@ Route::get('/cart-list',[CartController::class, 'cartList'])->name('products.car
 Route::get('/products/order_now',[CartController::class, 'orderNow'])->name('products.orderNow');
 Route::delete('/cart/{id}/destroy',[CartController::class, 'destroy'])->name('carts.destroy');
 Route::post('/products/order',[CartController::class,'orderPlace'])->name('products.order');
+Route::get('/my_orders',[CartController::class, 'myOrders'])->name('myOrders');

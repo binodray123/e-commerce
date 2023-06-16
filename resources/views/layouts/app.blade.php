@@ -31,6 +31,32 @@
         .trending-wrapper {
             margin: 30px;
         }
+        .order .image {
+    height: 600px;
+    overflow: hidden;
+    border-radius: 3px 0 0 3px;
+}
+
+.order .image img {
+    width: 500px;
+    height:auto;
+
+}
+.order{
+    padding: 0;
+}
+.order {
+    border: 0;
+    padding: 1px;
+    min-height: 6px;
+    background: #fff;
+    box-shadow: none;
+    border-radius: 10px;
+    position: relative;
+    max-height: 100000px;
+    border-bottom: 0px solid #ccc;
+
+}
     </style>
 </head>
 
@@ -61,7 +87,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="" class="nav-link">Orders</a>
+                            <a href="{{route('myOrders')}}" class="nav-link">Orders</a>
                         </li>
 
                     </ul>

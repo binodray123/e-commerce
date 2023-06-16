@@ -80,4 +80,12 @@ class CartController extends Controller
         }
         return redirect()->route('products');
     }
+
+    public function myOrders()
+    {
+        $orders = Order::with('product')
+        ->where(['user_id'=>auth()->user()->id])
+        ->get();
+        return view('product.myOrder', compact('orders'));
+    }
 }
