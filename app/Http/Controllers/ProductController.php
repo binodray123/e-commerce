@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductStoreRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -39,6 +40,8 @@ class ProductController extends Controller
     {
         $input = $request->all();
 
+        $slug = Str::slug($request->name, '-');
+        $input['slug'] = $slug;
         if($request->hasFile('image'))
         {
             $file = $request->file('image');
