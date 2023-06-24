@@ -39,7 +39,7 @@ class ProductController extends Controller
     public function store(ProductStoreRequest $request)
     {
         $input = $request->all();
-
+        // Slug is a part of a URL that identifies a particular (unique) web page.
         $slug = Str::slug($request->name, '-');
         $input['slug'] = $slug;
         if($request->hasFile('image'))
