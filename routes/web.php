@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
@@ -42,3 +43,7 @@ Route::get('/products/order_now',[CartController::class, 'orderNow'])->name('pro
 Route::delete('/cart/{id}/destroy',[CartController::class, 'destroy'])->name('carts.destroy');
 Route::post('/products/order',[CartController::class,'orderPlace'])->name('products.order');
 Route::get('/my_orders',[CartController::class, 'myOrders'])->name('myOrders')->middleware('auth');
+
+Route::get('/admins/login',[AdminController::class, 'login'])->name('admins.login');
+Route::post('/admins/login',[AdminController::class, 'adminLogin'])->name('admins.login');
+Route::get('/admins/logout',[AdminController::class, 'logout'])->name('admins.logout');

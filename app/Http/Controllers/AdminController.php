@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminLoginRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -14,7 +17,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $data = array();
+        if (Session::has('loginId'))
+        {
+            $data = Admin::where('id', '=', Session::get('loginId'))->first();
+        }
+        return view('admin.index', compact('data'));
     }
 
     /**
@@ -81,5 +89,34 @@ class AdminController extends Controller
     public function destroy(Admin $admin)
     {
         //
+    }
+
+    public function login()
+    {
+        return view('admin.login');
+    }
+
+    public function adminLogin(AdminLoginRequest $request)
+    {
+        $admin = Admin::where('email', '=', $request->email)->first();
+        if ($admin) {
+            if (Hash::check($request->password, $admin->password)) {
+                $request->Session()->put('loginId', $admin->id);
+                return view('admin.index')->with('success', 'Welcome to Dashboard');
+            } else {
+                return back()->with('fail', 'Password is not matches');
+            }
+        } else {
+            return back()->with('fail', 'This email is not registered for Admin');
+        }
+    }
+
+    public function logout()
+    {
+        if (Session::has('loginId'))
+        {
+            Session::pull('loginId');
+            return redirect()->route('admins.login');
+        }
     }
 }
