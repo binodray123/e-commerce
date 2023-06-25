@@ -47,3 +47,6 @@ Route::get('/my_orders',[CartController::class, 'myOrders'])->name('myOrders')->
 Route::get('/admins/login',[AdminController::class, 'login'])->name('admins.login');
 Route::post('/admins/login',[AdminController::class, 'adminLogin'])->name('admins.login');
 Route::get('/admins/logout',[AdminController::class, 'logout'])->name('admins.logout');
+Route::get('/admins/dashboard',[AdminController::class, 'index'])->name('admins.dashboard');
+
+

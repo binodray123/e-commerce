@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AdminLoginRequest;
 use App\Models\Admin;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -17,12 +21,25 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $data = array();
-        if (Session::has('loginId'))
-        {
-            $data = Admin::where('id', '=', Session::get('loginId'))->first();
-        }
-        return view('admin.index', compact('data'));
+        $totalProducts = Product::count();
+        // $totalAllUsers = User::count();
+
+        $todayDate = Carbon::now()->format('d-m-y');
+        $thisMonth = Carbon::now()->format('m');
+
+        // $totalOrders = Order::count();
+        // Total orders in today
+        $todayOrders = Order::whereDate('created_at', $todayDate)->count();
+        // Total orders in this month
+        $thisMonthOrders = Order::whereMonth('created_at', $thisMonth)->count();
+        // Total pending orders taken from order table of status column
+        $totalPaymentStatus = Order::where('payment_status', 'pending')->count();
+
+        $orders = Order::with('product','user')->latest()->get();
+
+        return view('admin.dashboard',
+            compact('totalProducts', 'todayOrders', 'thisMonthOrders', 'totalPaymentStatus','orders')
+        );
     }
 
     /**
@@ -102,7 +119,8 @@ class AdminController extends Controller
         if ($admin) {
             if (Hash::check($request->password, $admin->password)) {
                 $request->Session()->put('loginId', $admin->id);
-                return view('admin.index')->with('success', 'Welcome to Dashboard');
+
+                return redirect()->route('admins.dashboard')->with('success', 'Welcome to Dashboard');
             } else {
                 return back()->with('fail', 'Password is not matches');
             }
@@ -113,8 +131,7 @@ class AdminController extends Controller
 
     public function logout()
     {
-        if (Session::has('loginId'))
-        {
+        if (Session::has('loginId')) {
             Session::pull('loginId');
             return redirect()->route('admins.login');
         }
