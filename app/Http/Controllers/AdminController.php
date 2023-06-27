@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AdminLoginRequest;
+use App\Http\Requests\AdminUpdateRequest;
 use App\Models\Admin;
 use App\Models\Order;
 use App\Models\Product;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
@@ -82,7 +83,7 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        //
+        return view('admin.edit', compact('admin'));
     }
 
     /**
@@ -92,9 +93,24 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(AdminUpdateRequest $request, Admin $admin)
     {
-        //
+        $input = $request->all();
+        if($request->hasFile('image'))
+        {
+            $destination = 'admin/image/' .$admin->image;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). '.' .$extension;
+            $file->move('admin/image/', $filename);
+            $input['image'] = $filename;
+        }
+        $admin->update($input);
+        return redirect()->route('admins.dashboard')->with('success', 'Profile details Updated successfully');
     }
 
     /**

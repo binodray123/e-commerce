@@ -21,11 +21,10 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-user me-2"></i>{{ $admin->name }}
+             <i class="fas fa-user me-2"></i>{{ $admin->name }}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="{{route('admins.edit',$admin)}}">Profile</a></li>
                     <li><a class="dropdown-item" href="{{route('admins.logout')}}">Logout</a></li>
                 </ul>
             </li>
@@ -35,6 +34,11 @@
 
 <div class="container-fluid px-4">
     <div class="row g-3 my-2">
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success" role="alert">
+            <p> {{$message}} </p>
+        </div>
+        @endif
         <div class="col-md-3">
             <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                 <div>

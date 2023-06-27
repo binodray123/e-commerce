@@ -23,8 +23,7 @@
                     <i class="fas fa-user me-2"></i>{{ $admin->name }}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="{{route('admins.edit', $admin)}}">Profile</a></li>
                     <li><a class="dropdown-item" href="{{route('admins.logout')}}">Logout</a></li>
                 </ul>
             </li>
@@ -39,10 +38,10 @@
                     <a href="{{route('products.create')}}" class="btn btn-success btn-xs py-1 float-end">Add</a>
                 </div>
                 @if ($message = Session::get('success'))
-                    <div class="alert alert-success" role="alert">
-                        <p> {{$message}} </p>
-                    </div>
-                    @endif
+                <div class="alert alert-success" role="alert">
+                    <p> {{$message}} </p>
+                </div>
+                @endif
                 <table class="table bg-white rounded shadow-sm  table-hover">
                     <tr>
                         <th scope="col" width="50">S.No.</th>
@@ -71,7 +70,7 @@
                                 <form action="{{route('products.destroy', $product)}}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                <button type="submit" class="btn btn-warning"><i class="fa-solid fa-trash" style="color: #ed0707;"></i></button>
+                                    <button type="submit" class="btn btn-warning"><i class="fa-solid fa-trash" style="color: #ed0707;"></i></button>
                                 </form>
                             </td>
                         </tr>

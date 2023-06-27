@@ -50,5 +50,7 @@ Route::get('/admins/login',[AdminController::class, 'login'])->name('admins.logi
 Route::post('/admins/login',[AdminController::class, 'adminLogin'])->name('admins.login');
 Route::get('/admins/logout',[AdminController::class, 'logout'])->name('admins.logout');
 Route::get('/admins/dashboard',[AdminController::class, 'index'])->name('admins.dashboard');
+Route::get('/admins/{admin}/edit',[AdminController::class, 'edit'])->name('admins.edit');
+Route::put('/admins/{admin}',[AdminController::class,'update'])->name('admins.update');
 
 

@@ -23,8 +23,7 @@
                     <i class="fas fa-user me-2"></i>{{ $admin->name }}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="{{route('admins.edit',$admin)}}">Profile</a></li>
                     <li><a class="dropdown-item" href="{{route('admins.logout')}}">Logout</a></li>
                 </ul>
             </li>
