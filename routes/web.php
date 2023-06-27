@@ -35,7 +35,7 @@ Route::post('/products',[ProductController::class, 'store'])->name('products.sto
 Route::get('/products/{product}/details',[ProductController::class,'detail'])->name('products.details');
 Route::get('/products/{product}/edit',[ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{product}',[ProductController::class,'update'])->name('products.update');
-
+Route::delete('/products/{product}/destroy',[ProductController::class,'destroy'])->name('products.destroy');
 // Cart Controller
 
 

@@ -115,6 +115,12 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $destination = 'upload/image/' .$product->image;
+        if(File::exists($destination))
+        {
+            File::delete($destination);
+        }
+        $product->delete();
+        return redirect()->route('products')->with('success', 'Product deleted successfully');
     }
 }

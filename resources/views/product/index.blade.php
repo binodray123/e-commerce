@@ -66,9 +66,13 @@
                             <td>{{$product->category}}</td>
                             <td>{{$product->description}}</td>
                             <td>
-                                <a href="{{route('products.edit',$product)}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="{{route('products.edit',$product)}}" class="btn btn-secondary"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <br><br>
-                                <a href=""><i class="fa-solid fa-trash" style="color: #ed0707;"></i></a>
+                                <form action="{{route('products.destroy', $product)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                <button type="submit" class="btn btn-warning"><i class="fa-solid fa-trash" style="color: #ed0707;"></i></button>
+                                </form>
                             </td>
                         </tr>
 
