@@ -86,6 +86,7 @@
                         <th scope="col">Product</th>
                         <th scope="col">Customer</th>
                         <th scope="col">Price</th>
+                        <th scope="col">Payment Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -95,6 +96,7 @@
                         <td>{{$order->product->name}}</td>
                         <td>{{$order->user->name}}</td>
                         <td>{{$order->product->price}}</td>
+                        <td>{{$order->payment_status}}</td>
                     </tr>
                     @endforeach
                 </tbody>

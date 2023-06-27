@@ -32,7 +32,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/products',[ProductController::class, 'index'])->name('products');
 Route::get('/products/create',[ProductController::class, 'create'])->name('products.create');
 Route::post('/products',[ProductController::class, 'store'])->name('products.store');
-Route::get('/product/{product}/details',[ProductController::class,'detail'])->name('products.details');
+Route::get('/products/{product}/details',[ProductController::class,'detail'])->name('products.details');
+Route::get('/products/{product}/edit',[ProductController::class, 'edit'])->name('products.edit');
+Route::put('/products/{product}',[ProductController::class,'update'])->name('products.update');
 
 // Cart Controller
 

@@ -38,6 +38,11 @@
                 <div class="card-header">{{ __('Products List') }}
                     <a href="{{route('products.create')}}" class="btn btn-success btn-xs py-1 float-end">Add</a>
                 </div>
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success" role="alert">
+                        <p> {{$message}} </p>
+                    </div>
+                    @endif
                 <table class="table bg-white rounded shadow-sm  table-hover">
                     <tr>
                         <th scope="col" width="50">S.No.</th>
@@ -46,6 +51,7 @@
                         <th scope="col">Price</th>
                         <th scope="col">Category</th>
                         <th scope="col">Description</th>
+                        <th scope="col">Action</th>
                     </tr>
                     <tbody>
                         @foreach ($products as $product)
@@ -59,6 +65,11 @@
                             <td>{{$product->price}}</td>
                             <td>{{$product->category}}</td>
                             <td>{{$product->description}}</td>
+                            <td>
+                                <a href="{{route('products.edit',$product)}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <br><br>
+                                <a href=""><i class="fa-solid fa-trash" style="color: #ed0707;"></i></a>
+                            </td>
                         </tr>
 
                         @endforeach
