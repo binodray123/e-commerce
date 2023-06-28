@@ -49,6 +49,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Price</th>
                         <th scope="col">Category</th>
+                        <th scope="col">Quantity</th>
                         <th scope="col">Description</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -63,6 +64,7 @@
                             <td>{{$product->name}}</td>
                             <td>{{$product->price}}</td>
                             <td>{{$product->category}}</td>
+                            <td>{{$product->quantity}}</td>
                             <td>{{$product->description}}</td>
                             <td>
                                 <a href="{{route('products.edit',$product)}}" class="btn btn-secondary"><i class="fa-solid fa-pen-to-square"></i></a>

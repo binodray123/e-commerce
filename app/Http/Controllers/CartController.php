@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -55,7 +56,7 @@ class CartController extends Controller
         $total = DB::table('carts')
             ->join('products', 'carts.product_id', '=', 'products.id')
             ->where('carts.user_id', $userId)
-            ->sum('products.price'* 'products.quantity');
+            ->sum('products.price');
         return view('product.orderNow', ['total' => $total]);
     }
 
@@ -73,6 +74,11 @@ class CartController extends Controller
             $order->payment_status = "pending";
             $order->address = $request->address;
             $order->save();
+
+            $product = Product::where('id', $cart['product_id'])->first();
+            $product->quantity = $product->quantity - $cart['product_id'];
+            $product->update();
+            
             Cart::where('user_id', $userId)->delete();
         }
         return redirect()->route('home')->with('success', 'Your order has been completed');
