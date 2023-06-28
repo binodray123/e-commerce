@@ -7,6 +7,11 @@
             <div class="card">
                 <!-- <div class="card-header">{{ __('Products') }}</div> -->
                 <div class="card-body">
+                    @if ($message = Session::get('success'))
+                    <div class="alert alert-success" role="alert">
+                        <p> {{$message}} </p>
+                    </div>
+                    @endif
                     <!-- Carousel -->
                     <div id="demo" class="carousel slide" data-bs-ride="carousel">
 

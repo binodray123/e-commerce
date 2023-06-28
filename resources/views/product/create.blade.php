@@ -97,6 +97,20 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="quantity" class="col-md-4 col-form-label text-md-end">{{ __('Quantity') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}" required autocomplete="quantity">
+
+                                @error('quantity')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
 
                             <div class="col-md-6">

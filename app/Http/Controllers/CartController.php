@@ -19,7 +19,7 @@ class CartController extends Controller
                 'product_id' => $id,
             ];
             Cart::create($data);
-            return redirect()->route('products')->with('success', 'Product has been added to the cart successfully.');
+            return redirect()->route('home')->with('success', 'Product has been added to the cart successfully.');
         } else
         // redirect to login page
         {
@@ -55,7 +55,7 @@ class CartController extends Controller
         $total = DB::table('carts')
             ->join('products', 'carts.product_id', '=', 'products.id')
             ->where('carts.user_id', $userId)
-            ->sum('products.price');
+            ->sum('products.price'* 'products.quantity');
         return view('product.orderNow', ['total' => $total]);
     }
 
@@ -75,7 +75,7 @@ class CartController extends Controller
             $order->save();
             Cart::where('user_id', $userId)->delete();
         }
-        return redirect()->route('products');
+        return redirect()->route('home')->with('success', 'Your order has been completed');
     }
 
     public function myOrders()
