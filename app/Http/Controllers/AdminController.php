@@ -25,7 +25,7 @@ class AdminController extends Controller
         $totalProducts = Product::count();
         // $totalAllUsers = User::count();
 
-        $todayDate = Carbon::now()->format('y-m-d');
+        $todayDate = Carbon::now()->format('Y-m-d');
         $thisMonth = Carbon::now()->format('m');
 
         // $totalOrders = Order::count();

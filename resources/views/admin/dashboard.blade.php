@@ -91,6 +91,7 @@
                         <th scope="col">Customer</th>
                         <th scope="col">Price</th>
                         <th scope="col">Payment Status</th>
+                        <th scope="col">Address</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -100,7 +101,8 @@
                         <td>{{$order->product->name}}</td>
                         <td>{{$order->user->name}}</td>
                         <td>{{$order->product->price}}</td>
-                        <td>{{$order->payment_status}}</td>
+                        <td> <span class="badge bg-danger"> {{$order->payment_status}}</span></td>
+                        <td> {{ $order->address }} </td>
                     </tr>
                     @endforeach
                 </tbody>
