@@ -76,9 +76,9 @@ class CartController extends Controller
             $order->save();
 
             $product = Product::where('id', $cart['product_id'])->first();
-            $product->quantity = $product->quantity - $cart['product_id'];
+            $product->quantity = $product->quantity - $cart['quantity'];
             $product->update();
-            
+
             Cart::where('user_id', $userId)->delete();
         }
         return redirect()->route('home')->with('success', 'Your order has been completed');
